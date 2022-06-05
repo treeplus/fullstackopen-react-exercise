@@ -1,5 +1,13 @@
 import './App.css';
 
+const Hello = () => {
+  return (
+    <div>
+      <p>Hello World!</p>
+    </div>
+  )
+}
+
 const App = () => {
   const now = new Date()
   const a = 10
@@ -7,7 +15,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <p>Hello world!</p>
+      <Hello />
       <p>
         {a} plus {b} is {a+b}
       </p>
