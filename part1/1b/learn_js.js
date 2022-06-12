@@ -104,3 +104,85 @@ const average = function(a, b) {
 const result3 = average(2, 5) 
 console.log(result3)  // 3.5
 
+// Object methods and "this"
+const arto = {
+  name: 'Arto Hellas',
+  age: 35,
+  education: 'PhD',
+  greet: function() {
+    console.log('hello, my name is ' + this.name)
+  }
+}
+
+arto.greet()  // hello, my name is Arto Hellas
+
+// assign method  to objects
+const arto2 = {
+  name: 'Arto Hellas',
+  age: 35,
+  education: 'PhD',
+  greet: function() {
+    console.log('hello, my name is ' + this.name)
+  },
+}
+
+arto2.growOlder = function() {
+  this.age += 1
+}
+
+console.log(arto2.age) // 35
+arto2.growOlder()
+console.log(arto2.age) // 36
+
+// continue to modify the object
+const arto3 = {
+  name: 'Arto Hellas', 
+  age: 35,
+  education: 'PhD',
+  greet: function() {
+    console.log('hello, my name is ' + this.name)
+  },
+  doAddition: function(a, b) {
+    console.log(a + b)
+  },
+}
+
+arto3.doAddition(1, 4) // 5
+const referenceToAddition = arto3.doAddition
+referenceToAddition(10, 15)  // 25  
+
+arto3.greet() // hello, my name is Arto Hellas
+const referenceToGreet = arto3.greet
+referenceToGreet()  // hello, my name is undefined  
+
+// One situation leading to the "disappearance" of this arises when we set a timeout to call the greet function on the arto object, using the setTimeout function.
+const arto4 = {
+  name: 'Arto Hellas',
+  greet: function() {
+    console.log('hello, my name is ' + this.name)
+  },
+}
+setTimeout(arto4.greet, 1000) 
+// output: 
+// hello, my name is Arto Hellas
+// hello, my name is undefined
+// hello, my name is undefined
+
+setTimeout(arto4.greet.bind(arto4), 1000) // hello, my name is Arto Hellas
+
+// class syntax 
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  greet() {
+    console.log('hello, my name is ' + this.name)
+  }
+}
+const adam = new Person('Adam Ondra', 35)
+adam.greet() 
+
+const janja = new Person('Janja Garnbret', 35)
+janja.greet() 
+
