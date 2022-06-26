@@ -52,9 +52,26 @@ const App = () => {
   )
 }*/
 
+
+// Display Component
+const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+  )
+}
+
+// Button Component
+const Button =  (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+}
+
 // Stateful component
 // Event Handling
-// Event handler is a function
+    
 const App = () => {
   const [ counter, setCounter ] = useState(0)
   /*
@@ -72,11 +89,16 @@ const App = () => {
     setCounter(counter + 1)
   }
 
+  const decreaseByOne = () => {
+    setCounter(counter - 1)
+  }
+
   const setToZero = () => {
     setCounter(0)
   }
   
   return (
+    /*
     <div>
         <div>{counter}</div>
         <button onClick={increaseByOne}>
@@ -85,6 +107,23 @@ const App = () => {
         <button onClick={setToZero}>
           zero 
         </button>
+    </div>
+  )*/
+
+    <div>
+      <Display counter={counter} />
+      <Button
+        onClick={increaseByOne}
+        text='plus'
+      />
+      <Button
+        onClick={setToZero}
+        text='zero'
+      />
+      <Button
+        onClick={decreaseByOne}
+        text='minus'
+      />
     </div>
   )
 }
