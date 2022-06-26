@@ -54,20 +54,26 @@ const App = () => {
 
 
 // Display Component
+/*
 const Display = (props) => {
   return (
     <div>{props.counter}</div>
   )
-}
+}*/
+// refactor
+const Display = ({ counter }) => <div>{counter}</div>
 
 // Button Component
+/*
 const Button =  (props) => {
   return (
     <button onClick={props.onClick}>
       {props.text}
     </button>
   )
-}
+}*/
+//refactor
+const Button = ({ onClick, text }) => <button onClick={onClick}>{ text }</button>
 
 // Stateful component
 // Event Handling
