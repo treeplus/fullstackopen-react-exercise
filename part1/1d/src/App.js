@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 const App = () => {
-  /*
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
-  */
 
   const [ clicks, setClicks ] = useState({
     left: 0,
     right: 0
   })
+
+  const [allClicks, setAll] = useState([])
 
   const handleLeftClick = () => {
     /*
@@ -20,7 +20,10 @@ const App = () => {
     setClicks(newClicks)
     */
 
-    setClicks({...clicks, left: clicks.left + 1})
+    // setClicks({...clicks, left: clicks.left + 1})
+    
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
   }
 
   const handleRightClick = () => {
@@ -32,7 +35,10 @@ const App = () => {
     setClicks(newClicks)
     */
 
-    setClicks({...clicks, right: clicks.right + 1})
+    // setClicks({...clicks, right: clicks.right + 1})
+    //
+    setAll(allClicks.concat('R'))
+    setLeft(right + 1)
   }
 
   return (
@@ -45,6 +51,7 @@ const App = () => {
         right
       </button>
       {clicks.right}
+      <p>{allClicks.join(' ')}</p>
     </div>
   )
 }
